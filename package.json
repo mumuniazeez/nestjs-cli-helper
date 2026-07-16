@@ -24,7 +24,9 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w",
-    "publish": "pnpm build; npm publish --access=public"
+    "publish": "pnpm build; npm publish --access=public",
+    "docs:build": "pnpm --filter docs build",
+    "docs:start": "pnpm --filter docs build"
   },
   "devDependencies": {
     "@types/node": "^25.9.5",
