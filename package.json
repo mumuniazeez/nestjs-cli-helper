@@ -1,5 +1,5 @@
 {
-  "name": "nestjs-cli-helper",
+  "name": "@azcodes/nestjs-cli-helper",
   "version": "1.0.0",
   "description": "An Nestjs Cli helper that help you install Nestjs modules",
   "keywords": [
@@ -17,9 +17,14 @@
   "license": "MIT",
   "author": "AzCodes",
   "type": "module",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "bin": {
+    "nestjs-helper": "./dist/index.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "dev": "tsc -w",
+    "publish": "pnpm build; npm publish --access=public"
   },
   "devDependencies": {
     "@types/node": "^25.9.1",
