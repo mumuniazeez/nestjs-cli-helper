@@ -13,10 +13,14 @@ export function isNestjsCliInstalled() {
 export async function promptInstallation(): Promise<boolean> {
   console.log("Nestjs CLI is not installed on your machine");
 
-  const { installCli } = await inquirer.prompt({
+  const { installCli, setupNestProject } = await inquirer.prompt({
     installCli: {
       type: "confirm",
       message: "Do you want to  install it",
+    },
+    setupNestProject: {
+      type: "confirm",
+      message: "Do you want to setup a new Nestjs project in this directory?",
     },
   });
 
@@ -39,10 +43,21 @@ export async function promptInstallation(): Promise<boolean> {
   try {
     execSync(`npm install -g @nestjs/cli`);
     spinner.succeed("Nestjs CLI installed");
-    return true;
   } catch (error) {
     spinner.fail("Nestjs CLI failed to install");
     console.log(error);
     return false;
   }
+  if (setupNestProject) {
+    const spinner = ora("Setting up a Nestjs project in ./").start();
+    try {
+      execSync(`nest new ./`);
+      spinner.succeed("Nestjs CLI installed");
+      return true;
+    } catch (error) {
+      spinner.fail("Nestjs CLI failed to install");
+      console.log(error);
+      return false;
+    }
+  } else return true;
 }
