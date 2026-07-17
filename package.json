@@ -38,7 +38,9 @@
     "commander": "^15.0.0",
     "dotenv": "^17.4.2",
     "inquirer": "^14.0.2",
-    "ora": "^9.4.0"
+    "is-installed-globally": "^1.0.0",
+    "ora": "^9.4.0",
+    "resolve-global": "^2.0.0"
   },
   "packageManager": "pnpm@11.13.1+sha512.b2fc7683b8a6525414e7d13e1ba28caaddde96bf66ec540bfaeb7e702b81f3e0be4d1f295edf7f9fe0396740a8dce4509c582ddf79891f4543fea32d37645f25"
 }

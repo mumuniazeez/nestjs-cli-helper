@@ -6,6 +6,7 @@ import { readFileSync } from "fs";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 import list from "./commands/list.js";
+import info from "./commands/info.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -31,6 +32,12 @@ program
   .name("Nestjs Helper")
   .description("A Nestjs Cli helper that help you install Nestjs modules")
   .version(version);
+
+program
+  .command("info")
+  .alias("i")
+  .description("Get details of your Nestjs Project")
+  .action(info);
 
 program
   .command("list")
