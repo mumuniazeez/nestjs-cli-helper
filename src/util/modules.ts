@@ -64,6 +64,11 @@ const nestjsModules: Module[] = [
     category: "Testing",
     packageNames: ["@nestjs/testing"],
   },
+  {
+    name: "Terminus",
+    category: "Terminus (Health Checks)",
+    packageNames: ["@nestjs/terminus"],
+  },
 ];
 
-export default nestjsModules
+export default nestjsModules;
