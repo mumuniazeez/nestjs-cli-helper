@@ -22,7 +22,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: Install dependency
-        run: pnpm install --frozen-lockfile
+        run: npm ci
 
       - name: Build
         run: npm run build
