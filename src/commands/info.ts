@@ -6,7 +6,6 @@ import {
 
 export default async function info() {
   const nestInstalled = isNestjsCliInstalled()
-  console.log(nestInstalled);
   if (!nestInstalled) {
     const done = await promptInstallation();
     if (!done) return;

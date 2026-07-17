@@ -13,35 +13,37 @@ export function isNestjsCliInstalled() {
 export async function promptInstallation(): Promise<boolean> {
   console.log("Nestjs CLI is not installed on your machine");
 
-  const { installCli, setupNestProject } = await inquirer.prompt({
-    installCli: {
+  const { installCli, setupNestProject } = await inquirer.prompt([
+    {
+      name: "installCli",
       type: "confirm",
       message: "Do you want to  install it",
     },
-    setupNestProject: {
+    {
+      name: "setupNestProject",
       type: "confirm",
       message: "Do you want to setup a new Nestjs project in this directory?",
     },
-  });
+  ]);
 
   if (!installCli) {
     console.log("Nestjs CLI has to be installed to continue");
     return false;
   }
 
-  // const { packageManager } = await inquirer.prompt({
-  //   packageManager: {
-  //     message: "Which package manager do you want?",
-  //     type: "select",
-  //     choices: resolvePm(),
-  //   },
-  // });
+  const { packageManager } = await inquirer.prompt({
+    packageManager: {
+      message: "Which package manager do you want?",
+      type: "select",
+      choices: resolvePm(),
+    },
+  });
 
-  // console.log(packageManager);
+  console.log(packageManager);
 
   const spinner = ora("Installing Nestjs CLI").start();
   try {
-    execSync(`npm install -g @nestjs/cli`);
+    execSync(`npm install -g @nestjs/cli`, { stdio: "inherit" });
     spinner.succeed("Nestjs CLI installed");
   } catch (error) {
     spinner.fail("Nestjs CLI failed to install");
@@ -49,9 +51,11 @@ export async function promptInstallation(): Promise<boolean> {
     return false;
   }
   if (setupNestProject) {
-    const spinner = ora("Setting up a Nestjs project in ./").start();
+    const spinner = ora("Setting up a Nestjs project").start();
     try {
-      execSync(`nest new ./`);
+      execSync(`nest new --package-manager ${packageManager}`, {
+        stdio: "inherit",
+      });
       spinner.succeed("Nestjs CLI installed");
       return true;
     } catch (error) {
