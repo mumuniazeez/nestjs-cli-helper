@@ -1,6 +1,8 @@
-import isNestjsCliInstalled from "../util/check-nest-cli.js";
+import {isNestjsCliInstalled,promptInstallation} from "../util/check-nest-cli.js";
 
 export default function info() {
-  console.log("Nestjs Information");
-  console.log(isNestjsCliInstalled());
+  if (!isNestjsCliInstalled()) {
+    const done = promptInstallation()
+    if (!done) return
+  }
 }
