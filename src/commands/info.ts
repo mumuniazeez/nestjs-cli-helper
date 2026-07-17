@@ -1,8 +1,16 @@
-import {isNestjsCliInstalled,promptInstallation} from "../util/check-nest-cli.js";
+import { execSync } from "child_process";
+import {
+  isNestjsCliInstalled,
+  promptInstallation,
+} from "../util/check-nest-cli.js";
 
-export default function info() {
-  if (!isNestjsCliInstalled()) {
-    const done = promptInstallation()
-    if (!done) return
+export default async function info() {
+  const nestInstalled = isNestjsCliInstalled()
+  console.log(nestInstalled);
+  if (!nestInstalled) {
+    const done = await promptInstallation();
+    if (!done) return;
   }
+
+  console.log(execSync("nest i").toString().trim());
 }

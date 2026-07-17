@@ -7,6 +7,7 @@ import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 import list from "./commands/list.js";
 import info from "./commands/info.js";
+import install from "./commands/install.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -38,6 +39,8 @@ program
   .alias("i")
   .description("Get details of your Nestjs Project")
   .action(info);
+
+program.command("install").description("Install a module").action(install);
 
 program
   .command("list")
