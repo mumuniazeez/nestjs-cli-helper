@@ -6,7 +6,7 @@
     "Nestjs",
     "CLI"
   ],
-  "homepage": "https://github.com/mumuniazeez/nestjs-cli-helper#readme",
+  "homepage": "https://nestjs-cli-helper.vercel.app",
   "bugs": {
     "url": "https://github.com/mumuniazeez/nestjs-cli-helper/issues"
   },
