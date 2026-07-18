@@ -1,6 +1,6 @@
 {
   "name": "@azcodes/nestjs-cli-helper",
-  "version": "1.0.9",
+  "version": "1.1.1",
   "description": "A Nestjs Cli helper that help you install Nestjs modules",
   "keywords": [
     "Nestjs",
