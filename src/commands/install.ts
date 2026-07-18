@@ -3,9 +3,12 @@ import nestjsModules from "../util/modules.js";
 import resolvePm from "../util/resolve-pm.js";
 import ora from "ora";
 import { execSync } from "child_process";
+import { promptInstallation } from "../util/check-nest-cli.js";
 
 export default async function install() {
-  nestjsModules.forEach((m) => {});
+  const done = await promptInstallation();
+  if (!done) return;
+
   const {
     packages,
     packageManager,
