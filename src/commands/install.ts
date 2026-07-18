@@ -13,19 +13,21 @@ export default async function install() {
     packages,
     packageManager,
   }: { packages: (typeof nestjsModules)[0]["name"][]; packageManager: string } =
-    await inquirer.prompt({
-      packages: {
+    await inquirer.prompt([
+      {
+        name: "packages",
         type: "checkbox",
         choices: nestjsModules.map((m) => m.name),
         message: "",
         validate: (c) => c.length !== 0,
       },
-      packageManager: {
+      {
+        name: "packageManager",
         type: "select",
         message: "Select the packager manager to use",
         choices: resolvePm(),
       },
-    });
+    ]);
 
   console.log(`Installing modules using ${packageManager}`);
 
