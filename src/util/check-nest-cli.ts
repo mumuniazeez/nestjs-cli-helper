@@ -72,7 +72,13 @@ export async function promptInstallation(): Promise<boolean> {
       },
     ]);
 
-    if (!setupNestProject) return true;
+    if (!setupNestProject && nestjsProjectInstalled) return true;
+    else if (!setupNestProject && !nestjsProjectInstalled) {
+      console.log(
+        "This directory did not contain a Nestjs Project, install Nestjs to continue",
+      );
+      return false;
+    }
 
     const { packageManager } = await inquirer.prompt([
       {

@@ -27,7 +27,7 @@ export default async function install() {
       },
     });
 
-  const spinner = ora(`Installing modules using ${packageManager}`);
+  console.log(`Installing modules using ${packageManager}`);
 
   packages.forEach((pN) => {
     console.log(`Installing ${pN}`);
