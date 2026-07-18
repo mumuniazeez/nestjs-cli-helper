@@ -1,7 +1,8 @@
 {
   "position": 3,
   "label": "Usage",
-  "customProps": {
+  "link": {
+    "type": "generated-index",
     "description": "Learn how to use this CLI"
   }
 }
